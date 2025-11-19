@@ -20,6 +20,8 @@ import arbusto2 from "./assets/img/arbusto2.png";
 import arbusto4 from "./assets/img/arbusto4.png";
 
 import flores1 from "./assets/img/flores.png";
+import flores2 from "./assets/img/flores2.png";
+import flores3 from "./assets/img/flores3.png";
 import flores4 from "./assets/img/flor4.png";
 import flores5 from "./assets/img/flor5.png";
 import flores6 from "./assets/img/flor6.png";
@@ -272,13 +274,13 @@ function App() {
         <motion.img
           src={platas4}
           alt="Plantas laterales izquierda"
-          className="absolute top-0 -left-16 h-full z-10 pointer-events-none select-none"
+          className="absolute top-0 -left-30 h-full z-10 pointer-events-none select-none"
           {...float(0.3, 10, 7)}
         />
         <motion.img
           src={platas5}
           alt="Plantas laterales derecha"
-          className="absolute top-0 -right-16 h-full z-10 pointer-events-none select-none"
+          className="absolute top-0 -right-30 h-full z-10 pointer-events-none select-none"
           {...float(0.5, 10, 7)}
         />
 
@@ -287,27 +289,45 @@ function App() {
         <motion.img
           src={flores4}
           alt="Flores lateral superior esquerda"
-          className="absolute top-[8%] -left-10 w-[28%] z-30 pointer-events-none select-none"
+          className="absolute top-[15%] -left-10 w-[28%] z-30 pointer-events-none select-none"
           {...float(0.7, 10, 8)}
         />
         <motion.img
           src={flores1}
           alt="Flores lateral media esquerda"
-          className="absolute top-[32%] -left-8 w-[30%] z-30 pointer-events-none select-none"
+          className="absolute top-[35%] -left-8 w-[30%] z-30 pointer-events-none select-none"
+          {...float(1.0, 11, 8)}
+        />
+        <motion.img
+          src={flores2}
+          alt="Flores lateral media esquerda"
+          className="absolute top-[-2%] -left-4 w-[30%] z-30 pointer-events-none select-none"
           {...float(1.0, 11, 8)}
         />
         <motion.img
           src={flores5}
           alt="Flores lateral baixa esquerda"
-          className="absolute top-[52%] -left-6 w-[26%] z-30 pointer-events-none select-none"
+          className="absolute top-[60%] -left-6 w-[26%] z-30 pointer-events-none select-none"
+          {...float(1.2, 9, 9)}
+        />
+        <motion.img
+          src={flores2}
+          alt="Flores lateral baixa esquerda"
+          className="absolute top-[82%] -left-4 w-[26%] z-30 pointer-events-none select-none"
           {...float(1.2, 9, 9)}
         />
 
         {/* Lado derecho */}
         <motion.img
+          src={flores3}
+          alt="Flores lateral superior direita"
+          className="absolute top-[-4%] -right-4 w-[28%] z-30 pointer-events-none select-none"
+          {...float(0.9, 10, 8)}
+        />
+        <motion.img
           src={flores6}
           alt="Flores lateral superior direita"
-          className="absolute top-[10%] -right-10 w-[28%] z-30 pointer-events-none select-none"
+          className="absolute top-[18%] -right-10 w-[28%] z-30 pointer-events-none select-none"
           {...float(0.9, 10, 8)}
         />
         <motion.img
@@ -317,9 +337,15 @@ function App() {
           {...float(1.1, 11, 8)}
         />
         <motion.img
-          src={flores7}
+          src={flores5}
           alt="Flores lateral baixa direita"
-          className="absolute top-[54%] -right-6 w-[26%] z-30 pointer-events-none select-none"
+          className="absolute top-[60%] -right-6 w-[26%] z-30 pointer-events-none select-none"
+          {...float(1.3, 9, 9)}
+        />
+        <motion.img
+          src={flores3}
+          alt="Flores lateral baixa direita"
+          className="absolute top-[84%] -right-2 w-[26%] z-30 pointer-events-none select-none"
           {...float(1.3, 9, 9)}
         />
 
@@ -357,7 +383,7 @@ function App() {
         <div className="relative z-40 h-full flex flex-col justify-center items-center px-5 pt-4 pb-6">
           {/* Panel principal */}
           <motion.div
-            className="w-full rounded-[26px] bg-black/35 border border-emerald-200/50 backdrop-blur-2xl px-5 py-5 shadow-[0_0_35px_rgba(16,185,129,0.5)] relative"
+            className="w-full rounded-[26px] bg-black/5 border border-emerald-300 backdrop-blur-xs px-5 py-5 shadow-[0_0_35px_rgba(16,185,129,0.5)] relative"
             initial={{ opacity: 0, y: 20, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.6, duration: 0.7 }}
@@ -365,7 +391,7 @@ function App() {
             {/* Botón de música dentro de la tarjeta */}
             <button
               onClick={toggleAudio}
-              className="absolute -top-4 right-2 z-[60] rounded-full bg-black/70 border border-emerald-400/60 text-emerald-200 px-3 py-1.5 text-xs font-semibold flex items-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.7)] backdrop-blur"
+              className="absolute -top-4 right-2 z-60 rounded-full bg-black/70 border border-emerald-400/60 text-emerald-200 px-3 py-1.5 text-xs font-semibold flex items-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.7)] backdrop-blur"
             >
               <FaMusic className="text-emerald-300 text-sm" />
               <span>{isPlaying ? "Música ON" : "Ativar música"}</span>
@@ -393,7 +419,7 @@ function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.6 }}
               >
-                ¡Aniversário do Vini!
+                Aniversário do Vini!
               </motion.h1>
             </div>
 
