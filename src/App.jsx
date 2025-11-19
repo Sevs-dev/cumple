@@ -498,6 +498,8 @@ function App() {
                   </span>
                 </p>
 
+                <p>Lembre-se de trazer sua bebida</p>
+
                 <div className="pt-2">
                   <a
                     href="https://wa.me/554791072911?text=Oi%2C%20vou%20pro%20anivers%C3%A1rio%20tropical%20do%20Vini%21%20🌴🎉"
