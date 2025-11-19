@@ -64,7 +64,7 @@ function App() {
   const fallingLeaves = Array.from({ length: 10 });
 
   // --- Audio ---
-  const audioRef = useRef(null);
+  const audioRef = useRef(null); // 👈 CORREGIDO: sin genéricos TS
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
@@ -93,7 +93,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-slate-950 flex items-center justify-center p-4 relative overflow-hidden">
+    // FULL VIEWPORT SIN SCROLL
+    <div className="h-[100dvh] w-full bg-slate-950 flex items-center justify-center relative overflow-hidden">
       {/* Audio de fondo */}
       <audio ref={audioRef} src={tropicalSong} loop />
 
@@ -130,12 +131,12 @@ function App() {
         })}
       </div>
 
-      {/* Partículas que caen brillando (más rápidas y por encima de todo) */}
+      {/* Partículas que caen brillando */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-50">
         {fallingParticles.map((_, i) => {
           const size = 4 + (i % 3) * 2;
           const left = Math.random() * 100;
-          const duration = 5 + (i % 4) * 1.3; // más rápido
+          const duration = 5 + (i % 4) * 1.3;
           const delay = i * 0.28;
 
           return (
@@ -150,7 +151,7 @@ function App() {
               initial={{ opacity: 0, y: "-20%" }}
               animate={{
                 opacity: [0, 1, 1, 0],
-                y: ["-20%", "55%", "75%", "115%"], // cruzan más de la mitad
+                y: ["-20%", "55%", "75%", "115%"],
               }}
               transition={{
                 duration,
@@ -164,11 +165,11 @@ function App() {
         })}
       </div>
 
-      {/* Hojas cayendo (react-icons) sobre todo */}
+      {/* Hojas cayendo */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-50">
         {fallingLeaves.map((_, i) => {
           const left = 5 + Math.random() * 90;
-          const duration = 7 + (i % 5) * 1.4; // un poco más rápidas
+          const duration = 7 + (i % 5) * 1.4;
           const delay = i * 0.45;
 
           return (
@@ -178,7 +179,7 @@ function App() {
               style={{ left: `${left}%` }}
               initial={{ y: "-20%", rotate: 0, opacity: 0 }}
               animate={{
-                y: ["-20%", "55%", "75%", "115%"], // claramente pasan la mitad
+                y: ["-20%", "55%", "75%", "115%"],
                 rotate: [0, 18, -12, 24],
                 opacity: [0, 1, 1, 0],
               }}
@@ -196,12 +197,18 @@ function App() {
         })}
       </div>
 
-      {/* Tarjeta principal tipo story */}
+      {/* Tarjeta principal tipo story full-height */}
       <motion.div
         variants={cardVariant}
         initial="hidden"
         animate="visible"
-        className="relative w-full max-w-[430px] aspect-[9/16] rounded-[30px] overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.85)]"
+        className="
+          relative w-full max-w-[430px] 
+          h-full
+          rounded-[30px] 
+          overflow-hidden 
+          shadow-[0_25px_70px_rgba(0,0,0,0.85)]
+        "
       >
         {/* Fondo degradado */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#22c55e_0,#14532d_38%,#020617_80%)] saturate-125" />
@@ -215,7 +222,7 @@ function App() {
           {...float(0.4, 12, 7)}
         />
 
-        {/* PALMAS esquina arriba (como imanes de esquina) */}
+        {/* PALMAS esquina arriba */}
         <motion.img
           src={palma1}
           alt="Palma esquina izquierda"
@@ -241,7 +248,7 @@ function App() {
           {...float(0.5, 14, 8)}
         />
 
-        {/* ARBUSTO4 varias veces para rellenar parte superior */}
+        {/* ARBUSTO4 parte superior */}
         <motion.img
           src={arbusto4}
           alt="Arbusto superior centro"
@@ -261,7 +268,7 @@ function App() {
           {...float(1.3, 9, 8)}
         />
 
-        {/* PLANTAS 4 y 5 en los bordes verticales */}
+        {/* PLANTAS laterales */}
         <motion.img
           src={platas4}
           alt="Plantas laterales izquierda"
@@ -279,19 +286,19 @@ function App() {
         {/* Lado izquierdo */}
         <motion.img
           src={flores4}
-          alt="Flores lateral superior izquierda"
+          alt="Flores lateral superior esquerda"
           className="absolute top-[8%] -left-10 w-[28%] z-30 pointer-events-none select-none"
           {...float(0.7, 10, 8)}
         />
         <motion.img
           src={flores1}
-          alt="Flores lateral media izquierda"
+          alt="Flores lateral media esquerda"
           className="absolute top-[32%] -left-8 w-[30%] z-30 pointer-events-none select-none"
           {...float(1.0, 11, 8)}
         />
         <motion.img
           src={flores5}
-          alt="Flores lateral baja izquierda"
+          alt="Flores lateral baixa esquerda"
           className="absolute top-[52%] -left-6 w-[26%] z-30 pointer-events-none select-none"
           {...float(1.2, 9, 9)}
         />
@@ -299,24 +306,24 @@ function App() {
         {/* Lado derecho */}
         <motion.img
           src={flores6}
-          alt="Flores lateral superior derecha"
+          alt="Flores lateral superior direita"
           className="absolute top-[10%] -right-10 w-[28%] z-30 pointer-events-none select-none"
           {...float(0.9, 10, 8)}
         />
         <motion.img
           src={flores1}
-          alt="Flores lateral media derecha"
+          alt="Flores lateral media direita"
           className="absolute top-[34%] -right-8 w-[30%] z-30 pointer-events-none select-none"
           {...float(1.1, 11, 8)}
         />
         <motion.img
           src={flores7}
-          alt="Flores lateral baja derecha"
+          alt="Flores lateral baixa direita"
           className="absolute top-[54%] -right-6 w-[26%] z-30 pointer-events-none select-none"
           {...float(1.3, 9, 9)}
         />
 
-        {/* ARBUSTOS + flores laterales centrales inferiores */}
+        {/* ARBUSTOS inferiores */}
         <motion.img
           src={arbusto1}
           alt="Arbusto izquierdo"
@@ -330,7 +337,7 @@ function App() {
           {...float(0.9, 8, 6)}
         />
 
-        {/* PLANTAS Y ROCAS abajo en esquinas */}
+        {/* PLANTAS Y ROCAS abajo */}
         <motion.img
           src={plantasyrocas}
           alt="Plantas y rocas izquierda"
@@ -347,24 +354,24 @@ function App() {
         />
 
         {/* CONTENIDO CENTRAL */}
-        <div className="relative z-40 h-full flex flex-col justify-center items-center px-6 pt-[5%] pb-10">
+        <div className="relative z-40 h-full flex flex-col justify-center items-center px-5 pt-4 pb-6">
           {/* Panel principal */}
           <motion.div
-            className="w-full rounded-[26px] bg-black/35 border border-emerald-200/50 backdrop-blur-2xl px-5 py-6 shadow-[0_0_35px_rgba(16,185,129,0.5)]"
+            className="w-full rounded-[26px] bg-black/35 border border-emerald-200/50 backdrop-blur-2xl px-5 py-5 shadow-[0_0_35px_rgba(16,185,129,0.5)] relative"
             initial={{ opacity: 0, y: 20, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.6, duration: 0.7 }}
           >
-            {/* Botón de música (react-icons) */}
+            {/* Botón de música dentro de la tarjeta */}
             <button
               onClick={toggleAudio}
-              className="fixed top-3 right-4 z-[60] rounded-full bg-black/70 border border-emerald-400/60 text-emerald-200 px-3 py-1.5 text-xs font-semibold flex items-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.7)] backdrop-blur"
+              className="absolute -top-4 right-2 z-[60] rounded-full bg-black/70 border border-emerald-400/60 text-emerald-200 px-3 py-1.5 text-xs font-semibold flex items-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.7)] backdrop-blur"
             >
               <FaMusic className="text-emerald-300 text-sm" />
               <span>{isPlaying ? "Música ON" : "Ativar música"}</span>
             </button>
 
-            <div className="w-full flex justify-center mt-8">
+            <div className="w-full flex justify-center mt-6">
               <motion.div
                 className="inline-flex items-center gap-2 px-4 py-1 rounded-full text-[0.7rem] tracking-[0.18em] uppercase bg-slate-900/60 border border-emerald-300/80 shadow-[0_0_15px_rgba(52,211,153,0.7)]"
                 initial={{ opacity: 0, y: -10 }}
@@ -378,7 +385,7 @@ function App() {
 
             <div className="w-full text-center">
               <motion.h1
-                className="mt-3 text-4xl font-extrabold leading-tight tracking-wide 
+                className="mt-3 text-3xl font-extrabold leading-tight tracking-wide 
                bg-gradient-to-r from-emerald-300 via-amber-300 via-rose-300 to-teal-400
                bg-clip-text text-transparent 
                drop-shadow-[0_4px_25px_rgba(0,0,0,0.7)] uppercase"
@@ -386,12 +393,12 @@ function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.6 }}
               >
-                ¡Aniversário da Vini!
+                ¡Aniversário do Vini!
               </motion.h1>
             </div>
 
             <motion.div
-              className="mt-4 mx-auto w-full rounded-2xl 
+              className="mt-3 mx-auto w-full rounded-2xl 
              bg-white/25 border border-emerald-200/50 
              backdrop-blur-2xl 
              px-4 py-3 text-xs space-y-2 
