@@ -455,7 +455,7 @@ function App() {
 
                 <div className="pt-2">
                   <a
-                    href="https://wa.me/5531999999999?text=Oi%2C%20vou%20pro%20anivers%C3%A1rio%20tropical%20do%20Vini%21%20🌴🎉"
+                    href="https://wa.me/554791072911?text=Oi%2C%20vou%20pro%20anivers%C3%A1rio%20tropical%20do%20Vini%21%20🌴🎉"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full 
