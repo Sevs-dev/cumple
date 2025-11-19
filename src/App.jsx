@@ -498,7 +498,11 @@ function App() {
                   </span>
                 </p>
 
-                <p>Lembre-se de trazer sua bebida</p>
+                <p>
+                  <span className="font-semibold text-amber-400">
+                    Lembre-se de trazer sua bebida.{" "}
+                  </span>
+                </p>
 
                 <div className="pt-2">
                   <a
