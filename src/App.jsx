@@ -409,15 +409,26 @@ function App() {
               </motion.div>
             </div>
 
-            <div className="w-full text-center">
+            <div className="w-full text-center relative overflow-hidden">
               <motion.h1
-                className="mt-3 text-3xl font-extrabold leading-tight tracking-wide 
-               bg-gradient-to-r from-emerald-300 via-amber-300 via-rose-300 to-teal-400
-               bg-clip-text text-transparent 
-               drop-shadow-[0_4px_25px_rgba(0,0,0,0.7)] uppercase"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
+                className="mt-3 text-4xl font-extrabold leading-tight tracking-wide
+      bg-gradient-to-r from-red-600 via-rose-400 to-yellow-400
+      bg-clip-text text-transparent 
+      uppercase relative inline-block"
+                initial={{ opacity: 0, y: 10, scale: 0.96 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: [1, 1.03, 1],
+                  textShadow: [
+                    "0 0 8px rgba(255, 255, 255, 0.189), 0 0 18px rgba(238, 255, 3, 0.705)",
+                    "0 0 16px rgba(255, 255, 255, 0.571), 0 0 32px rgba(255, 186, 11, 0.9)",
+                    "0 0 8px rgba(255, 255, 255, 0.171), 0 0 18px rgba(244, 182, 23, 0.737)",
+                  ],
+                }}
+                style={{
+                  WebkitTextStroke: "1px rgba(144, 3, 127, 0.9)", // borde blanco
+                }}
               >
                 Aniversário do Vini!
               </motion.h1>
@@ -475,7 +486,8 @@ function App() {
                   <span className="font-semibold text-amber-300">
                     toque tropical irresistível
                   </span>{" "}
-                  🌴 (camisas floridas, vestidos coloridos, óculos estilosos...).
+                  🌴 (camisas floridas, vestidos coloridos, óculos
+                  estilosos...).
                 </p>
 
                 <p>
